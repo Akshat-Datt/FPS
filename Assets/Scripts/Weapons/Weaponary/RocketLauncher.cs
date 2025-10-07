@@ -23,8 +23,12 @@ public class RocketLauncher : WeaponBase
 
         Debug.Log($"{WeaponName} launched a rocket!");
 
-        // TODO: instantiate rocket prefab later
         if (rocketPrefab && firePoint)
-            Instantiate(rocketPrefab, firePoint.position, firePoint.rotation);
+        {
+            GameObject rocket = Instantiate(rocketPrefab, firePoint.position, firePoint.rotation);
+            Debug.Log($"{WeaponName} fired a rocket!");
+        }
+
+        ChangeState(WeaponState.Idle);
     }
 }
