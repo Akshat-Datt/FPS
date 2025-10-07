@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    //Managin ui script
     [Header("HUD references")]
     [SerializeField] private TextMeshProUGUI weaponNameText = null;
     [SerializeField] private TextMeshProUGUI ammoText = null;
