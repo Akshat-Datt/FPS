@@ -19,9 +19,9 @@ public class RocketLauncher : WeaponBase
         currentAmmo--;
 
         ChangeState(WeaponState.Firing);
-        NotifyAmmoChange();
+        NotifyAmmo();
 
-        Debug.Log($"{weaponName} launched a rocket!");
+        Debug.Log($"{WeaponName} launched a rocket!");
 
         // TODO: instantiate rocket prefab later
         if (rocketPrefab && firePoint)
