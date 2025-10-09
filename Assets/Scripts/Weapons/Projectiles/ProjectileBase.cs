@@ -1,50 +1,43 @@
 using UnityEngine;
 
-public abstract class ProjectileBase : MonoBehaviour
+public class ProjectileBase : MonoBehaviour
 {
-    [SerializeField] protected float speed = 20f;
-    [SerializeField] protected float lifeTime = 3f;
-    [SerializeField] protected int damage = 25;
+    [SerializeField] protected float speed = 10f;
+    [SerializeField] protected int damage = 10;
+    [SerializeField] protected float lifetime = 5f;
+    [SerializeField] protected string projectileName;
 
-    protected float lifeTimer;
-    protected bool isActive = true;
+    private float timer;
 
     protected virtual void OnEnable()
     {
-        lifeTimer = 0f;
-        isActive = true;
+        timer = 0f;
     }
 
     protected virtual void Update()
     {
-        if (!isActive) return;
+        Move();
+        timer += Time.deltaTime;
+        if (timer >= lifetime)
+            ReturnToPool();
+    }
 
+    protected virtual void Move()
+    {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        lifeTimer += Time.deltaTime;
-        if (lifeTimer >= lifeTime)
-        {
-            Deactivate();
-        }
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (!isActive) return;
-
-        var dmg = other.GetComponent<Damageable>();
-        if (dmg != null)
+        if (other.TryGetComponent(out IDamageable target))
         {
-            dmg.TakeDamage(damage);
+            target.TakeDamage(damage);
         }
-
-        OnHit(other);
+        ReturnToPool();
     }
 
-    protected abstract void OnHit(Collider hit);
-
-    protected virtual void Deactivate()
+    protected void ReturnToPool()
     {
-        isActive = false;
-        gameObject.SetActive(false);
+        ProjectilePool.Instance.ReturnToPool(projectileName, this);
     }
 }

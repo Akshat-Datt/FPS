@@ -2,23 +2,27 @@ using UnityEngine;
 
 public class RocketProjectile : ProjectileBase
 {
-    [Header("Explosion Settings")]
     [SerializeField] private float explosionRadius = 5f;
+    [SerializeField] private GameObject explosionEffect;
 
-    protected override void OnHit(Collider hit)
+    protected override void OnTriggerEnter(Collider other)
     {
-        // Simple explosion logic (will be replaced by pooled particles later)
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
-        foreach (var c in colliders)
+        base.OnTriggerEnter(other);
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (var hit in hits)
         {
-            var dmg = c.GetComponent<Damageable>();
-            if (dmg != null)
+            if (hit.TryGetComponent(out IDamageable target))
             {
-                dmg.TakeDamage(damage);
+                target.TakeDamage(damage);
             }
         }
 
-        Debug.Log($"Rocket exploded at {transform.position}");
-        Deactivate();
+        // Spawn explosion effect (pooled later)
+        if (explosionEffect != null)
+        {
+            GameObject fx = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(fx, 2f); // temporary — later pool it
+        }
     }
 }

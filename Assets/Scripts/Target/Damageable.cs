@@ -1,27 +1,41 @@
-// Damageable.cs
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Damageable : MonoBehaviour
+public class Damageable : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private Slider healthBar;
+    private int currentHealth;
 
-    private float health;
-
-    private void Awake()
+    private void OnEnable()
     {
-        health = maxHealth;
+        currentHealth = maxHealth;
+        UpdateUI();
     }
 
-    public virtual void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
-        health -= amount;
-        if (health <= 0f) Die();
+        currentHealth -= amount;
+        UpdateUI();
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
-    protected virtual void Die()
+    private void UpdateUI()
     {
-        // for now, just disable. We'll integrate pooling later.
+        if (healthBar != null)
+        {
+            healthBar.value = (float)currentHealth / maxHealth;
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log($"{name} destroyed!");
+        // Disable or return to pool later
         gameObject.SetActive(false);
-        Debug.Log($"{name} died");
     }
 }
