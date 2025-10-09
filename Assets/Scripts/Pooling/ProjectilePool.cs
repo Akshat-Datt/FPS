@@ -9,25 +9,50 @@ public class ProjectilePool : MonoBehaviour
     public class PoolItem
     {
         public string name;
-        public ProjectileBase prefab;
+        public GameObject prefab;
         public int initialSize = 10;
     }
 
-    [SerializeField] private List<PoolItem> projectileTypes = new List<PoolItem>();
-    private readonly Dictionary<string, ObjectPoolBase<ProjectileBase>> pools = new();
+    [SerializeField] private List<PoolItem> projectileTypes;
+    private Dictionary<string, ObjectPoolBase<ProjectileBase>> pools;
 
 
-    private void Awake()
+   private void Awake()
+{
+    if (Instance == null)
+        Instance = this;
+    else
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-
-        foreach (var type in projectileTypes)
-        {
-            ObjectPoolBase<ProjectileBase> pool = new ObjectPool<ProjectileBase>(type.prefab, type.initialSize);
-            pools.Add(type.name, pool);
-        }
+        Destroy(gameObject);
+        return;
     }
+
+    if (pools == null)
+        pools = new Dictionary<string, ObjectPoolBase<ProjectileBase>>();
+
+    if (projectileTypes == null)
+        projectileTypes = new List<PoolItem>();
+
+    foreach (var type in projectileTypes)
+    {
+        if (type.prefab == null)
+        {
+            Debug.LogWarning($"Projectile prefab not assigned for type: {type.name}");
+            continue;
+        }
+
+        ProjectileBase projectilePrefab = type.prefab.GetComponent<ProjectileBase>();
+
+        if (projectilePrefab == null)
+        {
+            Debug.LogError($"Prefab '{type.prefab.name}' does not have a ProjectileBase-derived component attached!");
+            continue;
+        }
+
+        var pool = new ObjectPool<ProjectileBase>(projectilePrefab, type.initialSize);
+        pools.Add(type.name, pool);
+    }
+}
 
     public ProjectileBase Get(string name)
     {
