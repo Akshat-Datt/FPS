@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 194199483}
   m_Layer: 0
   m_Name: Melee
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -653,6 +653,7 @@ GameObject:
   - component: {fileID: 664334306}
   - component: {fileID: 664334305}
   - component: {fileID: 664334304}
+  - component: {fileID: 664334307}
   m_Layer: 0
   m_Name: Cover1 (1)
   m_TagString: Untagged
@@ -752,6 +753,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664334302}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &664334307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664334302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3a38d4f43b4478e8482e398e3755e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Damageable
+  maxHealth: 100
+  healthBar: {fileID: 0}
 --- !u!1 &674357131
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +918,7 @@ GameObject:
   - component: {fileID: 705658648}
   m_Layer: 0
   m_Name: RocketLauncher
-  m_TagString: Untagged
+  m_TagString: Rocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1226,6 +1241,7 @@ GameObject:
   - component: {fileID: 964283209}
   - component: {fileID: 964283208}
   - component: {fileID: 964283207}
+  - component: {fileID: 964283210}
   m_Layer: 0
   m_Name: Cover1
   m_TagString: Untagged
@@ -1325,6 +1341,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964283205}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &964283210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964283205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3a38d4f43b4478e8482e398e3755e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Damageable
+  maxHealth: 100
+  healthBar: {fileID: 0}
+--- !u!1 &987948415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 987948417}
+  - component: {fileID: 987948416}
+  m_Layer: 0
+  m_Name: ParticlePoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &987948416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987948415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d003a9e1f1619439785de846ba5485ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParticlePool
+  explosionPrefab: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  muzzlePrefab: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+  poolSize: 10
+--- !u!4 &987948417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987948415}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.41847, y: 0.98418, z: 0.93205}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150657500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1604,7 @@ GameObject:
   - component: {fileID: 1411788662}
   - component: {fileID: 1411788661}
   - component: {fileID: 1411788660}
+  - component: {fileID: 1411788663}
   m_Layer: 0
   m_Name: Cover1 (2)
   m_TagString: Untagged
@@ -1626,6 +1704,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411788658}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1411788663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411788658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3a38d4f43b4478e8482e398e3755e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Damageable
+  maxHealth: 100
+  healthBar: {fileID: 0}
 --- !u!1 &1432257256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,11 +1879,42 @@ Transform:
   m_GameObject: {fileID: 1462573135}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.473}
+  m_LocalPosition: {x: 0, y: 0, z: 0.561}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 705658647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1533237122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1533237123}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1533237123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533237122}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1591769872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1547059039
 GameObject:
@@ -1944,7 +2067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ef169ec3d9d40759616b571448866a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 1000
   playerBody: {fileID: 116792605}
 --- !u!1 &1591769871
 GameObject:
@@ -1979,7 +2102,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1533237123}
   m_Father: {fileID: 160734097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1591769873
@@ -2001,6 +2125,7 @@ MonoBehaviour:
   fpsCamera: {fileID: 1547059043}
   range: 100
   damage: 25
+  firePoint: {fileID: 1533237123}
 --- !u!65 &1591769874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2204,7 +2329,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ff9cb7cb101440d9037495ae40e319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectilePool
-  projectileTypes: []
+  projectileTypes:
+  - name: Rocket
+    prefab: {fileID: 4708988099969868084, guid: 4216efec569ee4c409362f5687522cfc, type: 3}
+    initialSize: 10
+  - name: Arrow
+    prefab: {fileID: 2387181932276773250, guid: 4a139d6283c4d4fe0b55ce5d6e7748eb, type: 3}
+    initialSize: 10
 --- !u!4 &1609721545
 Transform:
   m_ObjectHideFlags: 0
@@ -2570,7 +2701,7 @@ Transform:
   m_GameObject: {fileID: 2011034576}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.463}
+  m_LocalPosition: {x: 0, y: 0, z: 1.083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2701,3 +2832,4 @@ SceneRoots:
   - {fileID: 1150657503}
   - {fileID: 144138117}
   - {fileID: 1609721545}
+  - {fileID: 987948417}

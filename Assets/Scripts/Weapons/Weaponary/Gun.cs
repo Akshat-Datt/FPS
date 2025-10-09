@@ -8,6 +8,7 @@ public class Gun : WeaponBase
     [SerializeField] private Camera fpsCamera = null;
     [SerializeField] private float range = 100f;
     [SerializeField] private int damage = 25;
+    [SerializeField] private Transform firePoint;
 
     private void Reset()
     {
@@ -31,6 +32,9 @@ public class Gun : WeaponBase
 
         // Visual/Audio feedback hooks (you can add muzzle particles, SFX)
         Debug.Log($"{WeaponName} fired. Ammo: {CurrentAmmo}/{MaxAmmo}");
+
+        if (firePoint != null)
+            ParticlePool.Instance.PlayMuzzle(firePoint.position, firePoint.rotation);
 
         // Basic hitscan: detect damageable objects
         if (fpsCamera != null)

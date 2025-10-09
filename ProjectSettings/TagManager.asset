@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Rocket
   - Arrow
+  - Projectile
   layers:
   - Default
   - TransparentFX
