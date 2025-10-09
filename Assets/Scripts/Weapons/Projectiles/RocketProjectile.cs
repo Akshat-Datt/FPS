@@ -4,7 +4,7 @@ public class RocketProjectile : ProjectileBase
 {
     [Header("Rocket Settings")]
     [SerializeField] private float explosionRadius = 5f;
-    [SerializeField] private int damage = 50;
+    // [SerializeField] private int damage = 50;
 
     protected override void OnTriggerEnter(Collider other)
     {

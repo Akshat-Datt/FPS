@@ -36,6 +36,6 @@ public class Damageable : MonoBehaviour, IDamageable
     {
         Debug.Log($"{name} destroyed!");
         // Disable or return to pool later
-        gameObject.SetActive(false);
+        EnemyPool.Instance?.ReturnEnemy(this);
     }
 }
