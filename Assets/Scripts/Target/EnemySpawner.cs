@@ -4,9 +4,9 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawner Settings")]
-    [SerializeField] private Transform[] spawnPoints;   // Array of spawn positions
-    [SerializeField] private float spawnInterval = 3f;  // Time between spawns
-    [SerializeField] private int maxEnemies = 10;       // Maximum active enemies at a time
+    [SerializeField] private Transform[] spawnPoints;   
+    [SerializeField] private float spawnInterval = 3f;  
+    [SerializeField] private int maxEnemies = 10;       
 
     private int activeEnemyCount = 0;
 

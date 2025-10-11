@@ -81,6 +81,5 @@ public abstract class WeaponBase : MonoBehaviour
         ChangeState(WeaponState.Idle);
     }
 
-    // Derived weapons MUST implement firing behavior
     public abstract void Use();
 }

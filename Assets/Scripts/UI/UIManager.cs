@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
 
     private void HandleAmmoChanged(string weaponName, int current, int max)
     {
-        // Only update if this ammo belongs to currently equipped weapon
         if (weaponName != currentWeaponName) return;
         if (ammoText != null) ammoText.text = $"{current} / {max}";
     }

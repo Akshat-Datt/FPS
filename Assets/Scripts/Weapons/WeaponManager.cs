@@ -19,12 +19,10 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        // quick number switching
         if (Input.GetKeyDown(KeyCode.Alpha1)) Equip(0);
         if (Input.GetKeyDown(KeyCode.Alpha2)) Equip(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) Equip(2);
 
-        // firing input (hold for automatic; pressed is up to weapon implementation)
         if (Input.GetButton("Fire1"))
         {
             weapons[currentIndex]?.Use();
@@ -47,7 +45,6 @@ public class WeaponManager : MonoBehaviour
         currentIndex = index;
         OnWeaponEquipped?.Invoke(weapons[currentIndex].WeaponName);
 
-        // notify UI of current weapon's ammo so UI shows accurate info immediately
         weapons[currentIndex].NotifyAmmo();
     }
 

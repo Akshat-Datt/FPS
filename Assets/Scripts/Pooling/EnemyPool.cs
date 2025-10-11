@@ -21,13 +21,9 @@ public class EnemyPool : MonoBehaviour
             return;
         }
 
-        // Initialize pool
         pool = new ObjectPool<Damageable>(enemyPrefab, initialPoolSize);
     }
 
-    /// <summary>
-    /// Spawns an enemy from the pool at the given position
-    /// </summary>
     public Damageable SpawnEnemy(Vector3 position, Quaternion rotation)
     {
         Damageable enemy = pool.Get();
@@ -37,9 +33,6 @@ public class EnemyPool : MonoBehaviour
         return enemy;
     }
 
-    /// <summary>
-    /// Returns enemy to the pool
-    /// </summary>
     public void ReturnEnemy(Damageable enemy)
     {
         if (enemy == null) return;

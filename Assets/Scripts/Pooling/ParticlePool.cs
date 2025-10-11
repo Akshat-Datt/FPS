@@ -17,7 +17,6 @@ public class ParticlePool : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        // Initialize pools
         explosionPool = new ObjectPool<ParticleSystem>(explosionPrefab, poolSize);
         muzzlePool = new ObjectPool<ParticleSystem>(muzzlePrefab, poolSize);
     }
@@ -44,7 +43,6 @@ public class ParticlePool : MonoBehaviour
         yield return new WaitForSeconds(delay);
         ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
-        // Determine which pool it belongs to
         if (ps == explosionPrefab) explosionPool.ReturnToPool(ps);
         else muzzlePool.ReturnToPool(ps);
     }

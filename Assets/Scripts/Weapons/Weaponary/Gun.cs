@@ -50,7 +50,6 @@ public class Gun : WeaponBase
             }
         }
 
-        // If out of ammo after this shot, change to Empty (ConsumeAmmo already handles it)
         if (CurrentAmmo <= 0) ChangeState(WeaponState.Empty);
         else ChangeState(WeaponState.Idle);
     }
