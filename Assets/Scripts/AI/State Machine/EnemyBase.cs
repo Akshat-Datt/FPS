@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public abstract class EnemyBase : MonoBehaviour, IDamageable
 {
     [Header("Enemy Settings")]
+    public string enemyType = "MeleeEnemy"; // must match pool name
     public float maxHealth = 100f;
     public float currentHealth;
     public float detectionRange = 10f;
@@ -34,8 +35,14 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
 
     protected virtual void Die()
     {
-        // You can return to pool here later
-        gameObject.SetActive(false);
+        if (EnemyPool.Instance != null)
+        {
+            EnemyPool.Instance.ReturnEnemy(enemyType, this);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void TakeDamage(int amount)
