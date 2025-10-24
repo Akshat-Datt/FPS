@@ -5,8 +5,13 @@ public class PatrolState : IState
 {
     private readonly MeleeEnemy enemy;
     private Vector3 patrolTarget;
+    private readonly float patrolRadius;
 
-    public PatrolState(MeleeEnemy enemy) => this.enemy = enemy;
+    public PatrolState(MeleeEnemy enemy, float patrolRadius = 8f)
+    {
+        this.enemy = enemy;
+        this.patrolRadius = patrolRadius;
+    }
 
     public void OnEnter()
     {

@@ -13,17 +13,17 @@ public class MeleeEnemy : EnemyBase
     private AttackState attackState;
 
     protected override void Start()
-    {
-        base.Start();
+{
+    base.Start();
 
-        // Initialize states
-        patrolState = new PatrolState(this);
-        chaseState = new ChaseState(this);
-        attackState = new AttackState(this);
+    // Initialize states with patrolRadius passed in
+    patrolState = new PatrolState(this, patrolRadius);
+    chaseState  = new ChaseState(this);
+    attackState = new AttackState(this);
 
-        // Start with patrol
-        stateMachine.ChangeState(patrolState);
-    }
+    stateMachine.ChangeState(patrolState);
+}
+
 
     public void SwitchToChase() => stateMachine.ChangeState(chaseState);
     public void SwitchToPatrol() => stateMachine.ChangeState(patrolState);
