@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6451009911723807942}
   - component: {fileID: 6823106288163432911}
   - component: {fileID: 8732024376927716880}
-  - component: {fileID: -1418923439870361957}
+  - component: {fileID: -3394482411072616183}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: RangedEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-1418923439870361957
+--- !u!114 &-3394482411072616183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,9 +159,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6251055808708864336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a64c32b71a54069ab6608866e31bc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 160a7adf168da4172b2cfdc65976deb5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemy
+  m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
   maxHealth: 100
   currentHealth: 0
   detectionRange: 10
@@ -169,6 +169,9 @@ MonoBehaviour:
   damage: 10
   agent: {fileID: 0}
   player: {fileID: 0}
-  patrolRadius: 8
-  attackCooldown: 1.5
+  patrolRadius: 10
+  attackCooldown: 2
+  attackDistance: 8
+  projectilePrefab: {fileID: 0}
+  firePoint: {fileID: 0}
   lastAttackTime: 0
