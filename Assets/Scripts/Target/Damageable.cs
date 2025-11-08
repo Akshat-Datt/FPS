@@ -3,9 +3,13 @@ using UnityEngine.UI;
 
 public class Damageable : MonoBehaviour, IDamageable
 {
+    [Header("Health Settings")]
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private Slider healthBar;
     private int currentHealth;
+
+    [Header("UI")]
+    [Tooltip("Assign a UI Image with Fill Mode set to 'Filled'.")]
+    [SerializeField] private Image healthFillImage;
 
     private void OnEnable()
     {
@@ -16,26 +20,35 @@ public class Damageable : MonoBehaviour, IDamageable
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateUI();
 
         if (currentHealth <= 0)
-        {
             Die();
-        }
+    }
+
+    public void Heal(int amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateUI();
     }
 
     private void UpdateUI()
     {
-        if (healthBar != null)
+        if (healthFillImage != null)
         {
-            healthBar.value = (float)currentHealth / maxHealth;
+            healthFillImage.fillAmount = (float)currentHealth / maxHealth;
         }
     }
 
     private void Die()
     {
         Debug.Log($"{name} destroyed!");
-        // Disable or return to pool later
-        EnemyPool.Instance?.ReturnEnemy(this);
+        // Return to pool if it's an enemy, otherwise disable
+        if (EnemyPool.Instance != null)
+            EnemyPool.Instance.ReturnEnemy(this);
+        else
+            gameObject.SetActive(false);
     }
 }

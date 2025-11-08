@@ -165,7 +165,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   detectionRange: 10
-  attackRange: 2
+  attackRange: 8
   damage: 10
   agent: {fileID: 0}
   player: {fileID: 0}
